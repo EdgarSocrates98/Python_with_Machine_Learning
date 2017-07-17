@@ -6,6 +6,9 @@ class Point(object):
         self.x = x
         self.y = y
 
+    def __str__(self):
+        return '<%s, %s>: %s' % (self.x, self.y)
+
 class Reward(Point):
 
     def __init__(self, x, y, name):
@@ -58,3 +61,20 @@ r3 = Reward(random.randint(0, 10), random.randint(0, 10), 'metal')
 r4 = Reward(random.randint(0, 10), random.randint(0, 10), 'tools')
 
 rewards = [r1, r2, r3, r4]
+
+robot = Robot(random.randint(0, 10), random.randint(0, 10))
+
+for i in range(10):
+    moviment = input('Type "up", "down", "left" or "right" for the moviment: ')
+    if moviment == 'up' or moviment == 'Up' or moviment == 'uP' or moviment == 'UP':
+        robot.move_up()
+    elif moviment == 'down' or moviment == 'Down' or moviment == 'DOWN':
+        robot.move_down()
+    elif moviment == 'left' or moviment == 'Left' or moviment == 'LEFT':
+        robot.move_left()
+    elif moviment == 'right' or moviment == 'Right' or moviment == 'RIGHT':
+        robot.move_right()
+    else:
+        print('Moviment Invalid! Please type "up", "down", "left" or "right"')
+        continue
+    check_reward(robot, rewards)
